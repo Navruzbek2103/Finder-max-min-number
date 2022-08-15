@@ -80,7 +80,6 @@ elForm.addEventListener("submit", function(evt){
 
       if(!isNaN(num)){
         if(num > 0){
-          elInfo.textContent = ' '
           for(let i = 0; i < num; i++){
             elValue = prompt((i + 1) + " - raqamni kiriting")
             if(elValue.length != 0){

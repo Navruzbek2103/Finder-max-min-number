@@ -1,3 +1,4 @@
+// Create all elements
 
 let elBody = document.querySelector("body");
 let elContainer = document.createElement("div")
@@ -10,6 +11,7 @@ let elSpanMax = document.createElement("span")
 let elHr = document.createElement("hr")
 let elSpanMin = document.createElement("span")
 
+// Elements append Child
 
 elBody.appendChild(elContainer);
 elContainer.appendChild(elForm);
@@ -21,6 +23,8 @@ elContainer.appendChild(elSpanMax);
 elContainer.appendChild(elHr);
 elContainer.appendChild(elSpanMin);
 
+
+// Rendering Formatting
 
 elContainer.classList = "container"
 elContainer.style.maxWidth = "270px"
@@ -64,6 +68,7 @@ elBtn.style.boxShadow = "0 0 3px 3px white"
 elBtn.style.border = "1px solid black"
 elBtn.style.borderRadius = "7px"
 
+// button submit event
 
 elForm.addEventListener("submit", function(evt){
   evt.preventDefault()
@@ -75,9 +80,11 @@ elForm.addEventListener("submit", function(evt){
     num = elInput.value.trim()
     let arr = []
     let elValue;
+
+    // Find input empty or not empty
+
     if(num.length > 0){
       num = Number(num);
-
       if(!isNaN(num)){
         if(num > 0){
           for(let i = 0; i < num; i++){
@@ -107,6 +114,8 @@ elForm.addEventListener("submit", function(evt){
           let elMin = arr[0];
 
           elHr.style.width = "90%";
+
+          // Find MAX & MIN number
 
           for(let j = 0; j < arr.length; j++){
             if(arr[j] >= elMax){
@@ -151,34 +160,3 @@ elForm.addEventListener("submit", function(evt){
     }
   }
 })
-
-
-
-
-
-// if(elInput.length != 0){
-//   elInput = Number(elInput);
-//   for(let i = 0; i < elInput; i++){
-//     let elValue = Number(prompt((i+1) + " - raqamni kiriting"));
-//     empty.push(elValue);
-//   }
-//   elMax = empty[0]
-//   elMin = empty[0]
-//   for(j = 0; j < empty.length; j++){
-//     if(empty[j] >= elMax){
-//       elMax = empty[j]
-//     }
-//     // 7 3 9 44 1 3 65
-//     if(empty[j] <= elMin){
-//       elMin = empty[j]
-//     }
-
-//   }
-//   elParagraph.textContent = "Kiritilgan raqamlar:  " + empty;
-//   elHeadingOne.innerHTML = "Max number = " + elMax;
-//   elHeadingTwo.innerHTML = "Min number = " + elMin;
-// }
-
-// else{
-//   alert("Iltimos, ma'lumot kiriting")
-// }

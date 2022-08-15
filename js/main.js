@@ -23,7 +23,7 @@ elContainer.appendChild(elSpanMin);
 
 
 elContainer.classList = "container"
-elContainer.style.maxWidth = "230px"
+elContainer.style.maxWidth = "270px"
 elContainer.style.width = "100%"
 elContainer.style.margin = "50px auto"
 elContainer.style.display = "flex"
@@ -116,7 +116,7 @@ elForm.addEventListener("submit", function(evt){
             elSpanMax.style.textAlign = "center";
             elSpanMax.textContent = "Maksimal son: " + elMax + " / " + "(index: " + elMaxIndex + ")";
           }
-          
+
           if(arr[j] <= elMin){
             elMin = arr[j];
             let elMinIndex = arr.indexOf(arr[j]);

@@ -79,57 +79,66 @@ elForm.addEventListener("submit", function(evt){
       num = Number(num);
 
       if(!isNaN(num)){
-        for(let i = 0; i < num; i++){
-          elValue = prompt((i + 1) + " - raqamni kiriting")
-          if(elValue.length != 0){
-            elValue = Number(elValue)
-            if(!isNaN(elValue)){
-              arr.push(elValue)
+        if(num > 0){
+          elInfo.textContent = ' '
+          for(let i = 0; i < num; i++){
+            elValue = prompt((i + 1) + " - raqamni kiriting")
+            if(elValue.length != 0){
+              elValue = Number(elValue)
+              if(!isNaN(elValue)){
+                arr.push(elValue)
+              }
+              else{
+                alert("Raqamli ma'lumot kiritilmadi! Iltimos, raqamli ma'lumot kiriting"); break;
+              }
             }
             else{
-              alert("Raqamli ma'lumot kiritilmadi! Iltimos, raqamli ma'lumot kiriting"); break;
+              if(i > 0){
+                alert("Ma'lumotlar to'liq kiritilmadi! Iltimos, ma'lumotlarni to'liq kiriting");break;
+              }
+              alert("Ma'lumot kiritilmadi! Iltimos, ma'lumot kiriting");
+              break;
             }
           }
-          else{
-            if(i > 0){
-              alert("Ma'lumotlar to'liq kiritilmadi! Iltimos, ma'lumotlarni to'liq kiriting");break;
+          elInfo.style.fontSize = "19px";
+          elInfo.style.textAlign = "center";
+          elInfo.style.color = "black";
+          elInfo.textContent = "Kiritilgan sonlar: " + arr
+          let elMax = arr[0];
+          let elMin = arr[0];
+
+          elHr.style.width = "90%";
+
+          for(let j = 0; j < arr.length; j++){
+            if(arr[j] >= elMax){
+              elMax = arr[j];
+              let elMaxIndex = arr.indexOf(arr[j]);
+              elSpanMax.style.fontSize = "18px";
+              elSpanMax.style.padding = "5px";
+              elSpanMax.style.textAlign = "center";
+              elSpanMax.textContent = "Maksimal son: " + elMax + " / " + "(index: " + elMaxIndex + ")";
             }
-            alert("Ma'lumot kiritilmadi! Iltimos, ma'lumot kiriting");
-            break;
+
+            if(arr[j] <= elMin){
+              elMin = arr[j];
+              let elMinIndex = arr.indexOf(arr[j]);
+              elSpanMin.style.fontSize = "18px";
+              elSpanMin.style.padding = "5px";
+              elSpanMin.style.textAlign = "center";
+              elSpanMin.textContent = "Minimal son: " + elMin + " / " + "(index: " + elMinIndex + ")";
+            }
           }
         }
-        elInfo.style.fontSize = "19px";
-        elInfo.style.textAlign = "center";
-        elInfo.style.color = "black";
-        elInfo.textContent = "Kiritilgan sonlar: " + arr
-        let elMax = arr[0];
-        let elMin = arr[0];
+        else{
 
-        elHr.style.width = "90%";
-
-        for(let j = 0; j < arr.length; j++){
-          if(arr[j] >= elMax){
-            elMax = arr[j];
-            let elMaxIndex = arr.indexOf(arr[j]);
-            elSpanMax.style.fontSize = "18px";
-            elSpanMax.style.padding = "5px";
-            elSpanMax.style.textAlign = "center";
-            elSpanMax.textContent = "Maksimal son: " + elMax + " / " + "(index: " + elMaxIndex + ")";
-          }
-
-          if(arr[j] <= elMin){
-            elMin = arr[j];
-            let elMinIndex = arr.indexOf(arr[j]);
-            elSpanMin.style.fontSize = "18px";
-            elSpanMin.style.padding = "5px";
-            elSpanMin.style.textAlign = "center";
-            elSpanMin.textContent = "Minimal son: " + elMin + " / " + "(index: " + elMinIndex + ")";
-          }
+          elInfo.style.textShadow = "0 0 5px blue"
+          elInfo.style.textAlign = "center"
+          elInfo.innerHTML = "Manfiy son kiritib bo'lmaydi. Iltimos, musbat son kiriting"
         }
-
       }
       else{
         elInfo.style.textShadow = "0 0 5px blue"
+        elInfo.style.textAlign = "center"
         elInfo.innerHTML = "Iltimos, raqamli ma'lumot kiriting"
       }
 

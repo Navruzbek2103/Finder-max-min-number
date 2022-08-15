@@ -7,6 +7,7 @@ let elInput = document.createElement("input")
 let elBtn = document.createElement("button")
 let elInfo = document.createElement("p")
 let elSpanMax = document.createElement("span")
+let elHr = document.createElement("hr")
 let elSpanMin = document.createElement("span")
 
 
@@ -17,11 +18,12 @@ elForm.appendChild(elInput);
 elForm.appendChild(elBtn);
 elContainer.appendChild(elInfo);
 elContainer.appendChild(elSpanMax);
+elContainer.appendChild(elHr);
 elContainer.appendChild(elSpanMin);
 
 
 elContainer.classList = "container"
-elContainer.style.maxWidth = "250px"
+elContainer.style.maxWidth = "230px"
 elContainer.style.width = "100%"
 elContainer.style.margin = "50px auto"
 elContainer.style.display = "flex"
@@ -40,7 +42,7 @@ elForm.style.gap = "30px"
 elForm.setAttribute("action", "https://echo.htmlacademy.ru/")
 
 elLabel.textContent = "Massivga nechta element joylamoqchisiz?"
-elLabel.style.fontSize = "25px";
+elLabel.style.fontSize = "22px";
 elLabel.style.textAlign = "center";
 elLabel.style.display = "block";
 elLabel.style.fontStyle = "italic";
@@ -56,11 +58,11 @@ elInput.style.margin = "0 auto";
 elInput.style.borderRadius = "5px";
 elInput.style.border = "none";
 
-elBtn.textContent = "Jo'natish"
-elBtn.style.width = "30%"
-elBtn.style.width = "Salom"
-elBtn.style.width = "Salom"
-elBtn.style.width = "Salom"
+elBtn.textContent = "Yuborish"
+elBtn.style.padding = "5px 20px"
+elBtn.style.boxShadow = "0 0 3px 3px white"
+elBtn.style.border = "1px solid black"
+elBtn.style.borderRadius = "7px"
 
 
 elForm.addEventListener("submit", function(evt){
@@ -85,19 +87,46 @@ elForm.addEventListener("submit", function(evt){
               arr.push(elValue)
             }
             else{
-              alert("Iltimos, raqamli ma'lumot kiriting"); break;
+              alert("Raqamli ma'lumot kiritilmadi! Iltimos, raqamli ma'lumot kiriting"); break;
             }
-
-            // alert(typeof elValue)
           }
           else{
-            alert("Iltimos, ma'lumot kiriting");
+            if(i > 0){
+              alert("Ma'lumotlar to'liq kiritilmadi! Iltimos, ma'lumotlarni to'liq kiriting");break;
+            }
+            alert("Ma'lumot kiritilmadi! Iltimos, ma'lumot kiriting");
             break;
           }
         }
-        alert(arr)
+        elInfo.style.fontSize = "19px";
+        elInfo.style.textAlign = "center";
+        elInfo.style.color = "black";
+        elInfo.textContent = "Kiritilgan sonlar: " + arr
+        let elMax = arr[0];
+        let elMin = arr[0];
 
-        // alert(typeof elValue)
+        elHr.style.width = "90%";
+
+        for(let j = 0; j < arr.length; j++){
+          if(arr[j] >= elMax){
+            elMax = arr[j];
+            let elMaxIndex = arr.indexOf(arr[j]);
+            elSpanMax.style.fontSize = "18px";
+            elSpanMax.style.padding = "5px";
+            elSpanMax.style.textAlign = "center";
+            elSpanMax.textContent = "Maksimal son: " + elMax + " / " + "(index: " + elMaxIndex + ")";
+          }
+          
+          if(arr[j] <= elMin){
+            elMin = arr[j];
+            let elMinIndex = arr.indexOf(arr[j]);
+            elSpanMin.style.fontSize = "18px";
+            elSpanMin.style.padding = "5px";
+            elSpanMin.style.textAlign = "center";
+            elSpanMin.textContent = "Minimal son: " + elMin + " / " + "(index: " + elMinIndex + ")";
+          }
+        }
+
       }
       else{
         elInfo.style.textShadow = "0 0 5px blue"
@@ -112,16 +141,7 @@ elForm.addEventListener("submit", function(evt){
       elInfo.style.textShadow = "0 0 5px blue"
       elInfo.innerHTML = "Iltimos, ma'lumot kiriting"
     }
-
-
-
-
-
-
-
   }
-
-
 })
 
 
